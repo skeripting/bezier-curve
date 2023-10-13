@@ -1,6 +1,7 @@
 # BezierCurve
 I wrote this module in 2020 to make BezierCurves more fluid for my Roblox games. I was very passionate about calculus in 2020 (when I was in 10th grade), so I implemented some derivative functions from wikipedia as well. This is a really simple class, really. Here's how it works:
 
+## Usage 
 ```lua
 local bz = BezierCurve:new(p0, p1, p2) -- Initialize a new BezierCurve object with coordinates p0, p1, and p2. They can be vectors, cframes, etc. 
 bz:ResolveMiddle() --[[  This is a function that will automatically set the elevation of the curve (p1),
@@ -25,3 +26,16 @@ for i = 1, 100 do
   game:GetService("RunService").RenderStepped:Wait()
 end 
 ```
+
+You can even take a bezier curve object and convert it into a serialized string, via `BitBuffer:Serialize()`. 
+You can then take the serialized string and convert it back into a BezierCurve, like this:
+
+```lua
+local bz = BezierCurve:new(part1.Position, Vector3.new(0, 0, 0), part2.Position)
+local serializedCurve = bz:Serialize()
+local deserializedCurve = BezierCurve:Deserialize(serializedCurve) -- gives you bz
+```
+
+This serialization stuff is really neat, because it gives us a cost-effective way of storing a curve into a DataStore, for example.
+
+If you have any questions, just reach out: https://twitter.com/script_ing
