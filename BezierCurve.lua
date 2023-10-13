@@ -1,3 +1,7 @@
+--[[
+By script_ing, originally written for Elemental Adventures.
+--]]
+
 local class = function(nc, newf) -- I did not create this class function.
 	nc = nc or {}
 	nc.__index = nc
